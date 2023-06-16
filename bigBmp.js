@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { createFileInfoHeader } = require('./common/bmp');
+const { createFileInfoHeader, createFileHeader } = require('./common/bmp');
 
 // Set the target image width and height
 const targetWidth = 2;
@@ -10,7 +10,10 @@ const red = Buffer.from([0, 0, 255]);
 
 // Write the header and red data to the image file
 const writeImage = () => {
-  const fileHeader = createFileHeader();
+  const fileHeader = createFileHeader({
+    width: targetWidth,
+    height: targetHeight,
+  });
   const fileInfoHeader = createFileInfoHeader({
     width: targetWidth,
     height: targetHeight,
@@ -24,17 +27,6 @@ const writeImage = () => {
       'The image has been created. Check the "enlarged_image.bmp" file.'
     );
   });
-};
-
-// Create file header
-const createFileHeader = () => {
-  const fileSize = 54 + red.length * targetWidth * targetHeight; // 54 bytes is the size of the header
-  const fileHeader = Buffer.alloc(14);
-  fileHeader.write('BM', 0); // File type
-  fileHeader.writeInt32LE(fileSize, 2); // File size
-  fileHeader.writeInt32LE(0, 6); // Reserved (0)
-  fileHeader.writeInt32LE(54, 10); // Start offset of pixel data
-  return fileHeader;
 };
 
 // Create image data
