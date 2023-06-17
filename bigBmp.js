@@ -1,5 +1,9 @@
 const fs = require('fs');
-const { createFileInfoHeader, createFileHeader } = require('./common/bmp');
+const {
+  createFileInfoHeader,
+  createFileHeader,
+  calculatePaddingSize,
+} = require('./common/bmp');
 
 // Set the target image width and height
 const targetWidth = 2;
@@ -35,7 +39,6 @@ const createImageData = () => {
   const paddingSize = calculatePaddingSize(targetWidth, red.length);
   const imageData = Buffer.alloc(imageDataSize + paddingSize);
 
-  // Enlarge the pixel to the target image size
   let offset = 0;
   for (let y = 0; y < targetHeight; y++) {
     for (let x = 0; x < targetWidth; x++) {
@@ -49,9 +52,5 @@ const createImageData = () => {
 };
 
 // Calculate the number of bytes required for padding
-const calculatePaddingSize = (width, pixelSize) => {
-  const bytesPerRow = width * pixelSize;
-  return (4 - (bytesPerRow % 4)) % 4;
-};
 
 writeImage();

@@ -24,7 +24,13 @@ const createFileInfoHeader = ({ width, height, pixelLength = 3 }) => {
   return fileInfoHeader;
 };
 
+const calculatePaddingSize = (width, pixelSize = 3) => {
+  const bytesPerRow = width * pixelSize;
+  return (4 - (bytesPerRow % 4)) % 4;
+};
+
 module.exports = {
   createFileHeader,
   createFileInfoHeader,
+  calculatePaddingSize,
 };
