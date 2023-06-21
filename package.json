@@ -1,12 +1,27 @@
 {
   "name": "image-maker",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "Make image buffer or file with color data",
+  "keywords": [
+    "image",
+    "bmp",
+    "buffer",
+    "node",
+    "color"
+  ],
+  "bugs": {
+    "email": "just731731@gmail.com",
+    "url": "https://github.com/NaamuKim/image-maker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NaamuKim/image-maker.git"
+  },
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "naamukim",
+  "author": "naamukim <just731731@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^2.8.8"
