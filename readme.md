@@ -29,6 +29,6 @@ const myBmp = getFullBmp({ colorsData: redBlueBlock, width: 2, height: 2 });
 
 fs.writeFile('red_blue.bmp', myBmp, (err) => {
   if (err) throw err;
-  console.log('"test.bmp" file created.');
+  console.log('"red_blue.bmp" file created.');
 });
 ```
