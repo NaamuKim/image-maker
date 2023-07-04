@@ -9,6 +9,7 @@
     "node",
     "color"
   ],
+  "type": "module",
   "bugs": {
     "email": "just731731@gmail.com",
     "url": "https://github.com/NaamuKim/image-maker/issues"
@@ -24,6 +25,7 @@
   "author": "naamukim <just731731@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.6"
   }
 }

@@ -1,5 +1,5 @@
-const { getFullBmp } = require('../lib');
-const fs = require('fs');
+import { getFullBmp } from '../lib/index.js';
+import fs from 'fs';
 
 const redBlock = Buffer.from([0, 0, 255]);
 const greenBlock = Buffer.from([0, 255, 0]);
