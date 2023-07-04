@@ -1,0 +1,1 @@
+export { getFullBmp } from './bmp';
