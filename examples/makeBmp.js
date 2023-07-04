@@ -1,4 +1,4 @@
-import { getFullBmp } from '../lib/index.js';
+import { getFullBmp } from '../lib/index.ts';
 import fs from 'fs';
 
 const redBlock = Buffer.from([0, 0, 255]);

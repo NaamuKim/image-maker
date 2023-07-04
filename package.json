@@ -10,6 +10,14 @@
     "color"
   ],
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
   "bugs": {
     "email": "just731731@gmail.com",
     "url": "https://github.com/NaamuKim/image-maker/issues"
@@ -18,13 +26,19 @@
     "type": "git",
     "url": "https://github.com/NaamuKim/image-maker.git"
   },
-  "main": "./lib/index.js",
+  "main": "lib/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepack": "npm run build",
+    "build": "npm run clean && npm run build:tsc && npm run build:js",
+    "build:tsc": "tsc --emitDeclarationOnly",
+    "build:js": "node build.js",
+    "clean": "rm -rf dist"
   },
   "author": "naamukim <just731731@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.3.3",
+    "esbuild": "^0.18.11",
     "prettier": "^2.8.8",
     "typescript": "^5.1.6"
   }

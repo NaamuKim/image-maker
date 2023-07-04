@@ -3,7 +3,15 @@
  *   BMP 파일은 파일 헤더와 파일 정보 헤더, 픽셀 데이터로 구성된다.
  */
 
-const createFileHeader = ({ width, height, pixelLength = 3 }) => {
+const createFileHeader = ({
+  width,
+  height,
+  pixelLength = 3,
+}: {
+  width: number;
+  height: number;
+  pixelLength?: number;
+}) => {
   const fileSize = 54 + width * height * pixelLength; // 54바이트는 헤더 크기
   const fileHeader = Buffer.alloc(14);
   fileHeader.write('BM', 0); // 파일 타입
@@ -12,7 +20,15 @@ const createFileHeader = ({ width, height, pixelLength = 3 }) => {
   return fileHeader;
 };
 
-const createFileInfoHeader = ({ width, height, pixelLength = 3 }) => {
+const createFileInfoHeader = ({
+  width,
+  height,
+  pixelLength = 3,
+}: {
+  width: number;
+  height: number;
+  pixelLength?: number;
+}) => {
   const fileInfoHeader = Buffer.alloc(40);
   fileInfoHeader.writeInt32LE(40, 0); // File information header size
   fileInfoHeader.writeInt32LE(width, 4); // Image width
@@ -24,7 +40,7 @@ const createFileInfoHeader = ({ width, height, pixelLength = 3 }) => {
   return fileInfoHeader;
 };
 
-const calculatePaddingSize = (width, pixelSize = 3) => {
+const calculatePaddingSize = (width: number, pixelSize = 3) => {
   const bytesPerRow = width * pixelSize;
   return (4 - (bytesPerRow % 4)) % 4;
 };

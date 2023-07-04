@@ -2,10 +2,18 @@ import {
   createFileHeader,
   createFileInfoHeader,
   calculatePaddingSize,
-} from './common/bmp.js';
-import { bytesPerSegment } from './common/constants/bytes.js';
+} from './common/bmp';
+import { bytesPerSegment } from './common/constants/bytes';
 
-const getFullBmp = ({ colorsData, width, height }) => {
+const getFullBmp = ({
+  colorsData,
+  width,
+  height,
+}: {
+  colorsData: Buffer;
+  width: number;
+  height: number;
+}) => {
   const fileHeader = createFileHeader({ width, height });
   const fileInfoHeader = createFileInfoHeader({ width, height });
   const paddingSize = calculatePaddingSize(width);
